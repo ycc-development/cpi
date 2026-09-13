@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal health_changed(current_health: int, max_health: int)
+signal died
 
 const SPEED := 300.0
 const JUMP_VELOCITY := -400.0
@@ -15,6 +16,7 @@ const PROJECTILE_SCENE := preload(
 @export var max_health: int = 100
 
 var health: int = 100
+var is_dead: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var projectile_spawn: Marker2D = $ProjectileSpawn
@@ -37,6 +39,13 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+		velocity.x = 0.0
+		move_and_slide()
+		return
+		
 	# Update weapon cooldown.
 	fire_cooldown = max(
 		fire_cooldown - delta,
@@ -131,6 +140,19 @@ func shoot() -> void:
 
 
 func _on_animation_finished() -> void:
+	print(
+		"[PLAYER] Animation finished: ",
+		animated_sprite.animation
+	)
+	
+	if animated_sprite.animation == "death":
+		print("[PLAYER] Death animation finished")
+		animated_sprite.pause()
+		
+		print("[PLAYER] Emitting died signal")
+		died.emit()
+		return
+
 	if not attack_visual_active:
 		return
 
@@ -141,9 +163,6 @@ func _on_animation_finished() -> void:
 	]:
 		return
 
-	# Continue the animation if:
-	# 1. The attack button is still held, or
-	# 2. The player pressed attack again during this cycle.
 	if Input.is_action_pressed("attack") or attack_cycle_queued:
 		attack_cycle_queued = false
 
@@ -157,6 +176,9 @@ func _on_animation_finished() -> void:
 		attack_visual_active = false
 
 func take_damage(amount: int) -> void:
+	if is_dead:
+		return
+		
 	health = max(
 		health - amount,
 		0
@@ -171,5 +193,21 @@ func take_damage(amount: int) -> void:
 
 
 func die() -> void:
-	print("Player defeated")
-	queue_free()
+	if is_dead:
+		print("[PLAYER] Player already defeated")
+		return
+
+	is_dead = true
+	attack_visual_active = false
+	attack_cycle_queued = false
+
+	velocity.x = 0.0
+
+	set_collision_mask_value(
+		3,
+		false
+	)
+
+	print("[PLAYER] Player defeated")
+
+	animated_sprite.play("death")

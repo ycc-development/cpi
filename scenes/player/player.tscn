@@ -10,9 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://0m5btd4qfxqs" path="res://assets/characters/bolsorambo/attack/sprite-frame-4.png" id="5_28m0y"]
 [ext_resource type="Texture2D" uid="uid://bj2six7afxt6i" path="res://assets/characters/bolsorambo/idle/sprite-frame-4.png" id="5_myrg7"]
 [ext_resource type="Texture2D" uid="uid://q8q15chu0ssb" path="res://assets/characters/bolsorambo/jump/sprite-frame-1.png" id="6_kvlxm"]
+[ext_resource type="Texture2D" uid="uid://b4iucmr02mi7l" path="res://assets/characters/bolsorambo/death/sprite-frame-1.png" id="6_uniwh"]
+[ext_resource type="Texture2D" uid="uid://ddbqqbh1i1ofj" path="res://assets/characters/bolsorambo/death/sprite-frame-2.png" id="7_iqsei"]
 [ext_resource type="Texture2D" uid="uid://dc1a7j4sbfup8" path="res://assets/characters/bolsorambo/jump/sprite-frame-2.png" id="7_uf5tr"]
 [ext_resource type="Texture2D" uid="uid://b6oo2h8jql5y4" path="res://assets/characters/bolsorambo/jump/sprite-frame-3.png" id="8_lgqa7"]
+[ext_resource type="Texture2D" uid="uid://dtj87ddq6n514" path="res://assets/characters/bolsorambo/death/sprite-frame-3.png" id="8_tffgl"]
 [ext_resource type="Texture2D" uid="uid://chphrqtb4epjf" path="res://assets/characters/bolsorambo/jump/sprite-frame-4.png" id="9_8ydkj"]
+[ext_resource type="Texture2D" uid="uid://dkgacqj6vnvea" path="res://assets/characters/bolsorambo/death/sprite-frame-4.png" id="9_pk8ii"]
 [ext_resource type="Texture2D" uid="uid://cvxq3gmmy2213" path="res://assets/characters/bolsorambo/jump_attack/sprite-frame-1.png" id="14_uniwh"]
 [ext_resource type="Texture2D" uid="uid://bqtxnav1a8hy7" path="res://assets/characters/bolsorambo/jump_attack/sprite-frame-2.png" id="15_iqsei"]
 [ext_resource type="Texture2D" uid="uid://dmxwkxoulsb6i" path="res://assets/characters/bolsorambo/jump_attack/sprite-frame-3.png" id="16_tffgl"]
@@ -47,6 +51,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_uniwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_iqsei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tffgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pk8ii")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_gx1jg")
 }, {
 "duration": 1.0,
@@ -58,7 +79,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_myrg7")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"idle",
 "speed": 4.0
 }, {
@@ -132,19 +153,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ekgt"]
-size = Vector2(115, 117.25)
+size = Vector2(91, 117.25)
 
 [node name="Player" type="CharacterBody2D" unique_id=813649103 groups=["player"]]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_dovo2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=55518183]
 position = Vector2(5.499997, -7.500002)
 scale = Vector2(0.3333333, 0.30395684)
 sprite_frames = SubResource("SpriteFrames_dovo2")
-animation = &"jump"
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=221389915]
-position = Vector2(6.5, 5.375)
+position = Vector2(-4, 5)
 shape = SubResource("RectangleShape2D_7ekgt")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=378262537]
@@ -152,4 +175,4 @@ zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 
 [node name="ProjectileSpawn" type="Marker2D" parent="." unique_id=2109777105]
-position = Vector2(40, 0)
+position = Vector2(75, -5)

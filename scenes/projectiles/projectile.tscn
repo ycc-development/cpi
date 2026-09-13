@@ -1,17 +1,25 @@
 [gd_scene format=3 uid="uid://kggu2ikqvokv"]
 
 [ext_resource type="Script" uid="uid://b1u72oh863ny2" path="res://scripts/projectile.gd" id="1_dtkph"]
+[ext_resource type="Texture2D" uid="uid://b7uw1yl6hadnw" path="res://assets/projectiles/m16_projectile.png" id="2_wndne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ekgt"]
-size = Vector2(30, 10)
+size = Vector2(34, 7.5)
 
 [node name="Projectile" type="Area2D" unique_id=1113977560]
-collision_layer = 4
-collision_mask = 2
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("1_dtkph")
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1985337823]
-polygon = PackedVector2Array(-15, -5, 15, -5, 15, 5, -15, 5)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1141687586]
+position = Vector2(-2, 0)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_wndne")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2025125463]
+position = Vector2(1, -0.25)
 shape = SubResource("RectangleShape2D_7ekgt")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1834841202]
+position = Vector2(1, 0)
+rect = Rect2(-17, -4, 34, 7)
