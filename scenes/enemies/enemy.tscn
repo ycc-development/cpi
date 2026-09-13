@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bn84uofgrnsh0"]
+
+[ext_resource type="Texture2D" uid="uid://bwtumhs5wi47s" path="res://icon.svg" id="1_6xk8f"]
+[ext_resource type="Script" uid="uid://ysbfp602mp78" path="res://scripts/enemy.gd" id="1_8e3ao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05ewc"]
+size = Vector2(124.664925, 128.29767)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38ino"]
+bg_color = Color(0.5882353, 0, 0, 1)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=868557523]
+collision_layer = 2
+script = ExtResource("1_8e3ao")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=986473560]
+scale = Vector2(1, 1.0041871)
+texture = ExtResource("1_6xk8f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1949579485]
+position = Vector2(1.9073486e-06, 0.15586686)
+scale = Vector2(1.0267524, 1.0108389)
+shape = SubResource("RectangleShape2D_05ewc")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=837302638]
+offset_left = -50.0
+offset_top = -80.0
+offset_right = 50.0
+offset_bottom = -70.0
+scale = Vector2(1.0037513, 0.9185483)
+theme_override_styles/fill = SubResource("StyleBoxFlat_38ino")
+show_percentage = false
