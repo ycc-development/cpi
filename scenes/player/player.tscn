@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://bsqcwga3akm4h" path="res://assets/characters/bolsorambo/walk_attack/sprite-frame-2.png" id="23_5q8fn"]
 [ext_resource type="Texture2D" uid="uid://cxqglc4i003ti" path="res://assets/characters/bolsorambo/walk_attack/sprite-frame-3.png" id="24_wva7c"]
 [ext_resource type="Texture2D" uid="uid://cupisuchipkau" path="res://assets/characters/bolsorambo/walk_attack/sprite-frame-4.png" id="25_7obkq"]
+[ext_resource type="AudioStream" uid="uid://bqqpmgqrnm04v" path="res://assets/audio/sfx/weapons/rifle_shot_01.mp3" id="30_iqsei"]
+[ext_resource type="Script" uid="uid://c1bieqi4skeit" path="res://scripts/player_camera.gd" id="30_tffgl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dovo2"]
 animations = [{
@@ -47,7 +49,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"attack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -153,7 +155,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ekgt"]
-size = Vector2(91, 117.25)
+size = Vector2(68, 111.625)
 
 [node name="Player" type="CharacterBody2D" unique_id=813649103 groups=["player"]]
 collision_layer = 2
@@ -164,15 +166,19 @@ script = ExtResource("1_dovo2")
 position = Vector2(5.499997, -7.500002)
 scale = Vector2(0.3333333, 0.30395684)
 sprite_frames = SubResource("SpriteFrames_dovo2")
-animation = &"death"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=221389915]
-position = Vector2(-4, 5)
+position = Vector2(2, 7.8125)
 shape = SubResource("RectangleShape2D_7ekgt")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=378262537]
-zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
+script = ExtResource("30_tffgl")
 
 [node name="ProjectileSpawn" type="Marker2D" parent="." unique_id=2109777105]
 position = Vector2(75, -5)
+
+[node name="GunshotAudio" type="AudioStreamPlayer2D" parent="." unique_id=95399037]
+stream = ExtResource("30_iqsei")
+volume_db = -8.0

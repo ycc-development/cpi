@@ -30,6 +30,7 @@ const GROUND_COLLISION_MASK: int = 1
 
 @export var debug_spawn: bool = false
 
+@export var spawning_enabled: bool = true
 
 var active_zombies: int = 0
 var player: Node2D
@@ -46,17 +47,14 @@ func _ready() -> void:
 		"player"
 	) as Node2D
 
-	if not is_instance_valid(player):
-		push_error("ZombieSpawner: Player not found.")
-		return
-
 	spawn_timer.one_shot = true
 
 	spawn_timer.timeout.connect(
 		_on_spawn_timer_timeout
 	)
 
-	schedule_next_spawn()
+	if spawning_enabled:
+		schedule_next_spawn()
 
 func schedule_next_spawn() -> void:
 	current_spawn_interval = randf_range(
@@ -137,7 +135,7 @@ func spawn_zombie() -> void:
 	if zombie == null:
 		return
 
-	get_tree().current_scene.add_child(
+	get_parent().add_child(
 		zombie
 	)
 
@@ -261,4 +259,25 @@ func _on_zombie_removed() -> void:
 		active_zombies,
 		"/",
 		max_zombies
+	)
+	
+func start_spawning() -> void:
+	if spawning_enabled:
+		return
+
+	spawning_enabled = true
+
+	print(
+		"[SPAWNER] Spawning started"
+	)
+
+	schedule_next_spawn()
+
+
+func stop_spawning() -> void:
+	spawning_enabled = false
+	spawn_timer.stop()
+
+	print(
+		"[SPAWNER] Spawning stopped"
 	)

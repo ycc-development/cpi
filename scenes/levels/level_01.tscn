@@ -1,0 +1,170 @@
+[gd_scene format=4 uid="uid://s0w7l5ihx8j"]
+
+[ext_resource type="Script" uid="uid://ba11pqso1s7hc" path="res://scripts/level.gd" id="1_50wog"]
+[ext_resource type="AudioStream" uid="uid://ciwv7jrq4mq6e" path="res://assets/audio/music/level_01_theme.mp3" id="2_1ey3t"]
+[ext_resource type="PackedScene" uid="uid://bn84uofgrnsh0" path="res://scenes/enemies/injected_zombie_1.tscn" id="4_kfebt"]
+[ext_resource type="Script" uid="uid://d3netsvrhi4tl" path="res://scripts/level_01/section_02_trigger.gd" id="5_qdh5e"]
+[ext_resource type="Texture2D" uid="uid://bamht8uavo7dm" path="res://assets/environment/ground/urban_ground_fill_01.png" id="6_1ey3t"]
+[ext_resource type="Texture2D" uid="uid://8jooryrflhvm" path="res://assets/environment/ground/urban_ground_tiles_01.png" id="6_50wog"]
+[ext_resource type="Script" uid="uid://d4ffr3brumo5h" path="res://scripts/zoombie_spawner.gd" id="6_ijn0p"]
+[ext_resource type="Texture2D" uid="uid://ba5288qvi7oxg" path="res://assets/environment/backgrounds/cuba_sky_01.png" id="8_t0hvh"]
+[ext_resource type="Texture2D" uid="uid://1ylp5uh6if5r" path="res://assets/environment/backgrounds/cuba_far_city_seamless.png" id="9_kfebt"]
+[ext_resource type="Texture2D" uid="uid://b2xn08p3m7emv" path="res://assets/environment/backgrounds/cuba_near_city.png" id="10_r72dd"]
+[ext_resource type="Texture2D" uid="uid://ck4x01y47subn" path="res://assets/environment/ground/cuba_asphalt_01.png" id="11_ijn0p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05ewc"]
+size = Vector2(19587, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ekgt"]
+size = Vector2(100, 2000)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ey3t"]
+texture = ExtResource("6_50wog")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t0hvh"]
+texture = ExtResource("6_1ey3t")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kfebt"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_1ey3t")
+sources/2 = SubResource("TileSetAtlasSource_t0hvh")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emxk8"]
+size = Vector2(69, 828.5)
+
+[node name="Level01" type="Node2D" unique_id=1364561844 groups=["level"]]
+script = ExtResource("1_50wog")
+level_music = ExtResource("2_1ey3t")
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1218600583]
+position = Vector2(204, 411)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1165103721]
+position = Vector2(0, 250)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=339377417]
+position = Vector2(9794.5, 469)
+shape = SubResource("RectangleShape2D_05ewc")
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground" unique_id=841013672]
+visible = false
+position = Vector2(2001, 349)
+polygon = PackedVector2Array(-2000, -40, 5000, -41, 5000, 120, -2000, 120)
+
+[node name="ZombieSpawner" type="Node2D" parent="." unique_id=1817917719]
+script = ExtResource("6_ijn0p")
+zombie_scene = ExtResource("4_kfebt")
+debug_spawn = true
+spawning_enabled = false
+
+[node name="SpawnTimer" type="Timer" parent="ZombieSpawner" unique_id=353587486]
+
+[node name="SpawnLeft" type="Marker2D" parent="ZombieSpawner" unique_id=105662852]
+position = Vector2(-500, 0)
+
+[node name="SpawnRight" type="Marker2D" parent="ZombieSpawner" unique_id=606144860]
+position = Vector2(1500, 0)
+
+[node name="Scenario" type="Node2D" parent="." unique_id=1016013409]
+
+[node name="Section01_Intro" type="Node2D" parent="Scenario" unique_id=1970651298]
+
+[node name="Enemies" type="Node2D" parent="Scenario/Section01_Intro" unique_id=1047259106]
+
+[node name="Enemy01" parent="Scenario/Section01_Intro/Enemies" unique_id=868557523 instance=ExtResource("4_kfebt")]
+position = Vector2(1701, 504)
+
+[node name="Enemy02" parent="Scenario/Section01_Intro/Enemies" unique_id=541563291 instance=ExtResource("4_kfebt")]
+position = Vector2(2503, 503)
+
+[node name="Props" type="Node2D" parent="Scenario/Section01_Intro" unique_id=476033662]
+
+[node name="SectionEnd" type="Marker2D" parent="Scenario/Section01_Intro" unique_id=1671225557]
+position = Vector2(3000, 0)
+
+[node name="Section02Trigger" type="Area2D" parent="Scenario/Section01_Intro" unique_id=366985752 node_paths=PackedStringArray("zombie_spawner")]
+position = Vector2(3000, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_qdh5e")
+zombie_spawner = NodePath("../../../ZombieSpawner")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenario/Section01_Intro/Section02Trigger" unique_id=899336307]
+shape = SubResource("RectangleShape2D_7ekgt")
+
+[node name="GroundVisual" type="TileMapLayer" parent="Scenario/Section01_Intro" unique_id=1733603828]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAkAAQAAAAAAAAABAAkAAQAAAAAAAAACAAkAAQABAAAAAAADAAkAAQAAAAAAAAAEAAkAAQACAAAAAAAFAAkAAQAAAAAAAAAGAAkAAQAAAAAAAAAHAAkAAQABAAAAAAAAAAoAAgAAAAAAAAABAAoAAgABAAAAAAACAAoAAgACAAAAAAADAAoAAgAAAAAAAAAEAAoAAgADAAAAAAAFAAoAAgABAAAAAAAGAAoAAgAAAAAAAAAHAAoAAgACAAAAAAAIAAoAAgAAAAAAAAAJAAoAAgABAAAAAAAKAAoAAgAHAAAAAAALAAoAAgABAAAAAAAMAAoAAgAAAAAAAAANAAoAAgAHAAAAAAAOAAoAAgABAAAAAAAPAAoAAgAFAAAAAAAQAAoAAgACAAAAAAARAAoAAgADAAAAAAASAAoAAgAFAAAAAAATAAoAAgAAAAAAAAAUAAoAAgABAAAAAAAVAAoAAgADAAAAAAAWAAoAAgAGAAAAAAAXAAoAAgAEAAAAAAAYAAoAAgAAAAAAAAAZAAoAAgAAAAAAAAAaAAoAAgADAAAAAAAbAAoAAgAEAAAAAAAcAAoAAgAHAAAAAAAdAAoAAgABAAAAAAAeAAoAAgABAAAAAAAfAAoAAgAGAAAAAAAgAAoAAgAGAAAAAAAhAAoAAgADAAAAAAAiAAoAAgAAAAAAAAAjAAoAAgACAAAAAAAkAAoAAgAFAAAAAAAlAAoAAgACAAAAAAAmAAoAAgAGAAAAAAAnAAoAAgAGAAAAAAAoAAoAAgAHAAAAAAApAAoAAgAEAAAAAAAqAAoAAgAHAAAAAAArAAoAAgAFAAAAAAAsAAoAAgADAAAAAAAtAAoAAgAFAAAAAAAuAAoAAgAEAAAAAAAAAAsAAgAGAAAAAAABAAsAAgAHAAAAAAACAAsAAgAAAAAAAAADAAsAAgAAAAAAAAAEAAsAAgADAAAAAAAFAAsAAgAHAAAAAAAGAAsAAgADAAAAAAAHAAsAAgAGAAAAAAAIAAsAAgAFAAAAAAAJAAsAAgAHAAAAAAAKAAsAAgAGAAAAAAALAAsAAgAAAAAAAAAMAAsAAgAHAAAAAAANAAsAAgAGAAAAAAAOAAsAAgAHAAAAAAAPAAsAAgAAAAAAAAAQAAsAAgAGAAAAAAARAAsAAgAHAAAAAAASAAsAAgAFAAAAAAATAAsAAgAGAAAAAAAUAAsAAgAGAAAAAAAVAAsAAgAGAAAAAAAWAAsAAgACAAAAAAAXAAsAAgAAAAAAAAAYAAsAAgAHAAAAAAAZAAsAAgAAAAAAAAAaAAsAAgAFAAAAAAAbAAsAAgABAAAAAAAcAAsAAgADAAAAAAAdAAsAAgABAAAAAAAeAAsAAgACAAAAAAAfAAsAAgABAAAAAAAgAAsAAgAEAAAAAAAhAAsAAgABAAAAAAAiAAsAAgABAAAAAAAjAAsAAgAAAAAAAAAkAAsAAgACAAAAAAAlAAsAAgAHAAAAAAAmAAsAAgAHAAAAAAAnAAsAAgAGAAAAAAAoAAsAAgAFAAAAAAApAAsAAgAAAAAAAAAqAAsAAgAFAAAAAAArAAsAAgAHAAAAAAAsAAsAAgACAAAAAAAtAAsAAgABAAAAAAAuAAsAAgAAAAAAAAAIAAkAAQAEAAAAAAAJAAkAAQAHAAAAAAAKAAkAAQAAAAAAAAALAAkAAQACAAAAAAAMAAkAAQAGAAAAAAANAAkAAQAGAAAAAAAOAAkAAQAHAAAAAAAPAAkAAQAGAAAAAAAQAAkAAQAEAAAAAAARAAkAAQADAAAAAAASAAkAAQADAAAAAAATAAkAAQABAAAAAAAUAAkAAQADAAAAAAAVAAkAAQAHAAAAAAAWAAkAAQAFAAAAAAAXAAkAAQACAAAAAAAYAAkAAQAFAAAAAAAZAAkAAQADAAAAAAAaAAkAAQAEAAAAAAAbAAkAAQAEAAAAAAAcAAkAAQAAAAAAAAAdAAkAAQAHAAAAAAAeAAkAAQAHAAAAAAAfAAkAAQABAAAAAAAgAAkAAQAFAAAAAAAhAAkAAQAAAAAAAAAiAAkAAQAGAAAAAAAjAAkAAQACAAAAAAAkAAkAAQACAAAAAAAlAAkAAQAFAAAAAAAmAAkAAQAEAAAAAAAnAAkAAQAEAAAAAAAoAAkAAQAHAAAAAAApAAkAAQACAAAAAAAqAAkAAQACAAAAAAArAAkAAQADAAAAAAAsAAkAAQAEAAAAAAAtAAkAAQACAAAAAAAuAAkAAQAHAAAAAAAAAAwAAgAHAAAAAAABAAwAAgAGAAAAAAACAAwAAgAGAAAAAAADAAwAAgAAAAAAAAAEAAwAAgAHAAAAAAAFAAwAAgACAAAAAAAGAAwAAgADAAAAAAAHAAwAAgAFAAAAAAAIAAwAAgABAAAAAAAJAAwAAgAEAAAAAAAKAAwAAgAGAAAAAAALAAwAAgACAAAAAAAMAAwAAgAFAAAAAAANAAwAAgAAAAAAAAAOAAwAAgACAAAAAAAPAAwAAgAGAAAAAAAQAAwAAgAHAAAAAAARAAwAAgAAAAAAAAASAAwAAgAAAAAAAAATAAwAAgAFAAAAAAAUAAwAAgAEAAAAAAAVAAwAAgAEAAAAAAAWAAwAAgAGAAAAAAAXAAwAAgACAAAAAAAYAAwAAgAGAAAAAAAZAAwAAgAAAAAAAAAaAAwAAgAEAAAAAAAbAAwAAgAHAAAAAAAcAAwAAgACAAAAAAAdAAwAAgADAAAAAAAeAAwAAgAEAAAAAAAfAAwAAgAAAAAAAAAgAAwAAgAGAAAAAAAhAAwAAgAGAAAAAAAiAAwAAgAEAAAAAAAjAAwAAgACAAAAAAAkAAwAAgACAAAAAAAlAAwAAgADAAAAAAAmAAwAAgAAAAAAAAAnAAwAAgAHAAAAAAAoAAwAAgAFAAAAAAApAAwAAgAFAAAAAAAqAAwAAgAHAAAAAAArAAwAAgAFAAAAAAAsAAwAAgAAAAAAAAAtAAwAAgACAAAAAAAuAAwAAgADAAAAAADy/woAAgAHAAAAAADz/woAAgADAAAAAAD0/woAAgACAAAAAAD1/woAAgABAAAAAAD2/woAAgABAAAAAAD3/woAAgAAAAAAAAD4/woAAgAFAAAAAAD5/woAAgADAAAAAAD6/woAAgABAAAAAAD7/woAAgAEAAAAAAD8/woAAgABAAAAAAD9/woAAgAHAAAAAAD+/woAAgAAAAAAAAD//woAAgAAAAAAAADy/wsAAgAHAAAAAADz/wsAAgAAAAAAAAD0/wsAAgAHAAAAAAD1/wsAAgACAAAAAAD2/wsAAgADAAAAAAD3/wsAAgADAAAAAAD4/wsAAgABAAAAAAD5/wsAAgADAAAAAAD6/wsAAgAAAAAAAAD7/wsAAgACAAAAAAD8/wsAAgADAAAAAAD9/wsAAgACAAAAAAD+/wsAAgABAAAAAAD//wsAAgAGAAAAAADy/wwAAgAGAAAAAADz/wwAAgAHAAAAAAD0/wwAAgABAAAAAAD1/wwAAgAEAAAAAAD2/wwAAgACAAAAAAD3/wwAAgACAAAAAAD4/wwAAgADAAAAAAD5/wwAAgAHAAAAAAD6/wwAAgAFAAAAAAD7/wwAAgADAAAAAAD8/wwAAgAAAAAAAAD9/wwAAgAHAAAAAAD+/wwAAgADAAAAAAD//wwAAgADAAAAAADy/wkAAQAHAAAAAADz/wkAAQADAAAAAAD0/wkAAQAHAAAAAAD1/wkAAQAAAAAAAAD2/wkAAQAHAAAAAAD3/wkAAQAFAAAAAAD4/wkAAQAEAAAAAAD5/wkAAQAAAAAAAAD6/wkAAQAGAAAAAAD7/wkAAQAAAAAAAAD8/wkAAQAAAAAAAAD9/wkAAQAGAAAAAAD+/wkAAQAAAAAAAAD//wkAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_kfebt")
+
+[node name="DebugSectionEnd" type="Line2D" parent="." unique_id=2034282283]
+position = Vector2(3000, 0)
+points = PackedVector2Array(0, -1000, 0, 1000)
+default_color = Color(1, 0, 0, 1)
+
+[node name="Background" type="Node2D" parent="." unique_id=748598978]
+
+[node name="Sky" type="Parallax2D" parent="Background" unique_id=2054872326]
+scroll_scale = Vector2(0.05, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Sky" unique_id=2111018719]
+z_index = -30
+position = Vector2(-53, -155)
+texture = ExtResource("8_t0hvh")
+centered = false
+
+[node name="FarCity" type="Parallax2D" parent="Background" unique_id=1951559185]
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/FarCity" unique_id=1992683688]
+z_index = -20
+position = Vector2(-152, 200)
+texture = ExtResource("9_kfebt")
+centered = false
+
+[node name="NearCity" type="Parallax2D" parent="Background" unique_id=1423947876]
+scroll_scale = Vector2(0.3, 1)
+repeat_size = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/NearCity" unique_id=938915942]
+z_index = -10
+position = Vector2(-157, -9)
+texture = ExtResource("10_r72dd")
+centered = false
+
+[node name="LeftBoundary" type="StaticBody2D" parent="." unique_id=1398989468]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoundary" unique_id=1025433002]
+position = Vector2(-34, 413.75)
+shape = SubResource("RectangleShape2D_emxk8")
+
+[node name="GroundArt" type="Node2D" parent="." unique_id=558132653]
+
+[node name="Sprite2D" type="Sprite2D" parent="GroundArt" unique_id=485996432]
+z_index = -5
+texture_repeat = 2
+position = Vector2(-410, 268)
+texture = ExtResource("11_ijn0p")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 20000, 1024)

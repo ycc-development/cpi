@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b8wi4sswdvwtc"]
+
+[ext_resource type="Script" uid="uid://dw3ot7jokrg7s" path="res://scripts/ui.gd" id="1_u7n8c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sugp2"]
+bg_color = Color(0, 0.43137255, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jyhfs"]
+load_path = "res://.godot/imported/game_over_01.jpeg-48e429ab86db80cdd5855e780de11747.ctex"
+
+[node name="UI" type="CanvasLayer" unique_id=1410657012]
+process_mode = 3
+script = ExtResource("1_u7n8c")
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="." unique_id=1578987151]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 30.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_sugp2")
+value = 100.0
+show_percentage = false
+
+[node name="GameOverPanel" type="ColorRect" parent="." unique_id=1181577950]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.9411765)
+
+[node name="BackgroundImage" type="TextureRect" parent="GameOverPanel" unique_id=861956669]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("CompressedTexture2D_jyhfs")
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="GameOverPanel" unique_id=1039969179]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 625.0
+offset_right = 890.0
+offset_bottom = 685.0
+theme_override_constants/separation = 20
+
+[node name="RestartButton" type="Button" parent="GameOverPanel/ButtonsContainer" unique_id=1887764445]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+text = "RESTART"
+
+[node name="MainMenuButton" type="Button" parent="GameOverPanel/ButtonsContainer" unique_id=1227508638]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+text = " MENU PRINCIPAL"

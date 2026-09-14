@@ -3,8 +3,11 @@ extends CharacterBody2D
 signal health_changed(current_health: int, max_health: int)
 signal died
 
-const SPEED := 300.0
+const SPEED := 220
 const JUMP_VELOCITY := -400.0
+const BLOOD_HIT_SCENE := preload(
+	"res://scenes/effects/blood_hit.tscn"
+)
 
 # Weapon fire rate. Independent from animation speed.
 const FIRE_INTERVAL := 0.12
@@ -17,9 +20,12 @@ const PROJECTILE_SCENE := preload(
 
 var health: int = 100
 var is_dead: bool = false
+var projectile_spawn_x: float
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var projectile_spawn: Marker2D = $ProjectileSpawn
+
+@onready var gunshot_audio: AudioStreamPlayer2D = $GunshotAudio
 
 var fire_cooldown := 0.0
 
@@ -32,6 +38,10 @@ var attack_cycle_queued := false
 
 func _ready() -> void:
 	health = max_health
+
+	projectile_spawn_x = absf(
+		projectile_spawn.position.x
+	)
 
 	animated_sprite.animation_finished.connect(
 		_on_animation_finished
@@ -69,7 +79,19 @@ func _physics_process(delta: float) -> void:
 	# Handle horizontal movement.
 	if direction != 0:
 		velocity.x = direction * SPEED
-		animated_sprite.flip_h = direction < 0
+
+		animated_sprite.flip_h = (
+			direction < 0
+		)
+
+		if animated_sprite.flip_h:
+			projectile_spawn.position.x = (
+				-projectile_spawn_x
+			)
+		else:
+			projectile_spawn.position.x = (
+				projectile_spawn_x
+			)
 	else:
 		velocity.x = move_toward(
 			velocity.x,
@@ -129,14 +151,26 @@ func update_animation(direction: float) -> void:
 func shoot() -> void:
 	var projectile = PROJECTILE_SCENE.instantiate()
 
-	projectile.global_position = projectile_spawn.global_position
+	var level: Node = get_current_level()
+
+	if level == null:
+		projectile.queue_free()
+		return
+
+	level.add_child(
+		projectile
+	)
+
+	projectile.global_position = (
+		projectile_spawn.global_position
+	)
 
 	if animated_sprite.flip_h:
 		projectile.direction = -1.0
 	else:
 		projectile.direction = 1.0
 
-	get_tree().current_scene.add_child(projectile)
+	gunshot_audio.play()
 
 
 func _on_animation_finished() -> void:
@@ -175,17 +209,16 @@ func _on_animation_finished() -> void:
 	else:
 		attack_visual_active = false
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, hit_position: Vector2) -> void:
 	if is_dead:
 		return
-		
-	health = max(
-		health - amount,
-		0
-	)
-	
+
+	health = maxi(health - amount, 0)
+
 	health_changed.emit(health, max_health)
-	
+
+	spawn_blood_hit(hit_position)
+
 	print("Player HP: ", health)
 
 	if health <= 0:
@@ -211,3 +244,54 @@ func die() -> void:
 	print("[PLAYER] Player defeated")
 
 	animated_sprite.play("death")
+
+func spawn_blood_hit(
+	hit_position: Vector2
+) -> void:
+	var blood_hit: AnimatedSprite2D = (
+		BLOOD_HIT_SCENE.instantiate()
+	)
+
+	var level: Node = get_current_level()
+
+	if level == null:
+		blood_hit.queue_free()
+		return
+
+	level.add_child(
+		blood_hit
+	)
+
+	blood_hit.global_position = hit_position
+	
+
+func reset_player() -> void:
+	is_dead = false
+	health = max_health
+	velocity = Vector2.ZERO
+	
+	health_changed.emit(
+		health,
+		max_health
+	)
+	
+	set_collision_mask_value(
+		3,
+		true
+	)
+
+	animated_sprite.play(
+		"idle"
+	)
+	
+func get_current_level() -> Node:
+	var level: Node = get_tree().get_first_node_in_group(
+		"level"
+	)
+
+	if level == null:
+		push_error(
+			"Player: Current level not found."
+		)
+
+	return level

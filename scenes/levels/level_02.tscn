@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://co8qxg3jg7ef4"]
+
+[ext_resource type="Script" uid="uid://ba11pqso1s7hc" path="res://scripts/level.gd" id="1_3acmf"]
+[ext_resource type="Script" uid="uid://d4ffr3brumo5h" path="res://scripts/zoombie_spawner.gd" id="3_a3l5x"]
+[ext_resource type="PackedScene" uid="uid://bn84uofgrnsh0" path="res://scenes/enemies/injected_zombie_1.tscn" id="4_keemd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05ewc"]
+size = Vector2(4000, 80)
+
+[node name="Level02" type="Node2D" unique_id=1364561844 groups=["level"]]
+script = ExtResource("1_3acmf")
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1218600583]
+position = Vector2(10000, 411)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1165103721]
+position = Vector2(0, 250)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=339377417]
+position = Vector2(2003, 267)
+shape = SubResource("RectangleShape2D_05ewc")
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground" unique_id=841013672]
+position = Vector2(2001, 267)
+polygon = PackedVector2Array(-2000, -40, 2000, -40, 2000, 40, -2000, 40)
+
+[node name="ZombieSpawner" type="Node2D" parent="." unique_id=1817917719]
+script = ExtResource("3_a3l5x")
+zombie_scene = ExtResource("4_keemd")
+
+[node name="SpawnTimer" type="Timer" parent="ZombieSpawner" unique_id=353587486]
+
+[node name="SpawnLeft" type="Marker2D" parent="ZombieSpawner" unique_id=105662852]
+position = Vector2(-500, 0)
+
+[node name="SpawnRight" type="Marker2D" parent="ZombieSpawner" unique_id=606144860]
+position = Vector2(1500, 0)
+
+[node name="Enemy" parent="." unique_id=868557523 instance=ExtResource("4_keemd")]
+position = Vector2(1011, 405)

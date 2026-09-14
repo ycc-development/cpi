@@ -90,7 +90,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05ewc"]
-size = Vector2(91.5508, 113.7669)
+size = Vector2(41.879623, 113.7669)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38ino"]
 bg_color = Color(0.5882353, 0, 0, 1)
@@ -106,7 +106,7 @@ sprite_frames = SubResource("SpriteFrames_7ekgt")
 animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1949579485]
-position = Vector2(9.536743e-07, 13.5)
+position = Vector2(-9.499999, 13.5)
 scale = Vector2(1.0267524, 1.0108389)
 shape = SubResource("RectangleShape2D_05ewc")
 

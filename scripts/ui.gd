@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+@onready var player: Node = get_parent().get_node(
+	"Player"
+)
 
 @onready var player_health_bar: ProgressBar = $PlayerHealthBar
 
@@ -28,7 +31,9 @@ var game_over_images: Array[Texture2D] = [
 
 
 func _ready() -> void:
-	game_over_panel.hide()
+	player.health_changed.connect(
+		_on_player_health_changed
+	)
 
 	restart_button.pressed.connect(
 		_on_restart_button_pressed
@@ -37,6 +42,15 @@ func _ready() -> void:
 	main_menu_button.pressed.connect(
 		_on_main_menu_button_pressed
 	)
+	
+	if not player.is_connected(
+		"died",
+		_on_player_died
+	):
+		player.connect(
+			"died",
+			_on_player_died
+		)
 
 func _on_main_menu_button_pressed() -> void:
 	print("Main menu")
@@ -71,5 +85,11 @@ func _on_player_died() -> void:
 
 
 func _on_restart_button_pressed() -> void:
-	get_tree().paused = false
-	get_tree().reload_current_scene()
+	game_over_panel.hide()
+
+	var main: Node = get_parent()
+
+	if main.has_method(
+		"restart_current_level"
+	):
+		main.restart_current_level()

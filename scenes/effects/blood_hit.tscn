@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cdnl212fbumcp"]
+
+[ext_resource type="Texture2D" uid="uid://p0vkg2ux44uh" path="res://assets/effects/blood/sprite-frame-1.png" id="1_xji6f"]
+[ext_resource type="Texture2D" uid="uid://cmxlutd7pwnk0" path="res://assets/effects/blood/sprite-frame-2.png" id="2_l1njy"]
+[ext_resource type="Texture2D" uid="uid://hmq2swp6s33t" path="res://assets/effects/blood/sprite-frame-3.png" id="3_njel6"]
+[ext_resource type="Texture2D" uid="uid://bkb8f0ayiobj2" path="res://assets/effects/blood/sprite-frame-4.png" id="4_jvb0v"]
+[ext_resource type="Script" uid="uid://dmxiakouohbrh" path="res://scripts/blood_hit.gd" id="5_l1njy"]
+[ext_resource type="AudioStream" uid="uid://3h1xu4xlq7vl" path="res://assets/audio/sfx/impacts/bullet_flesh_impact_01.mp3" id="6_njel6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3vlsf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xji6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_l1njy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_njel6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jvb0v")
+}],
+"loop": 0,
+"name": &"blood_hit",
+"speed": 5.0
+}]
+
+[node name="BloodHit" type="AnimatedSprite2D" unique_id=2064263754]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_3vlsf")
+animation = &"blood_hit"
+script = ExtResource("5_l1njy")
+
+[node name="HitAudio" type="AudioStreamPlayer2D" parent="." unique_id=250489376]
+stream = ExtResource("6_njel6")
+volume_db = -8.0

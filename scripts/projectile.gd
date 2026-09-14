@@ -4,6 +4,8 @@ extends Area2D
 	$VisibleOnScreenNotifier2D
 )
 
+@onready var sprite: Sprite2D = $Sprite2D
+
 const SPEED := 600.0
 const DAMAGE := 10
 const LIFETIME := 3.0
@@ -14,6 +16,7 @@ var lifetime := LIFETIME
 
 
 func _ready() -> void:
+	sprite.flip_h = direction < 0.0
 	screen_notifier.screen_exited.connect(
 		_on_screen_exited
 	)
@@ -36,6 +39,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.has_method("take_damage"):
-		body.take_damage(DAMAGE)
+		var hit_position: Vector2 = global_position
+		hit_position.x += direction * 35.0
+		body.take_damage(DAMAGE, hit_position)
 
 	queue_free()

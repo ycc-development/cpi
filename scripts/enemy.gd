@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 @export var max_health: int = 100
 @export var move_speed: float = 40.0
 
@@ -10,6 +9,9 @@ extends CharacterBody2D
 @export var attack_interval: float = 1.8
 @export var corpse_lifetime: float = 5.0
 
+const BLOOD_HIT_SCENE := preload(
+	"res://scenes/effects/blood_hit.tscn"
+)
 
 var health: int = 100
 var player: Node2D
@@ -223,7 +225,14 @@ func attack_player() -> void:
 			distance_y
 		)
 
-		player.take_damage(attack_damage)
+		var hit_position: Vector2 = player.global_position
+
+		hit_position.y -= 30.0
+
+		player.take_damage(
+			attack_damage,
+			hit_position
+		)
 
 
 func _on_animation_finished() -> void:
@@ -259,7 +268,7 @@ func finish_death() -> void:
 	queue_free()
 
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, hit_position: Vector2) -> void:
 	if is_dead:
 		return
 
@@ -270,10 +279,11 @@ func take_damage(amount: int) -> void:
 
 	health_bar.value = health
 
-	print(
-		"Enemy HP: ",
-		health
+	spawn_blood_hit(
+		hit_position
 	)
+
+	print("Enemy HP: ", health)
 
 	if health <= 0:
 		die()
@@ -311,3 +321,35 @@ func die() -> void:
 	print("Enemy defeated")
 
 	animated_sprite.play("death")
+
+
+func spawn_blood_hit(
+	hit_position: Vector2
+) -> void:
+	var blood_hit: AnimatedSprite2D = (
+		BLOOD_HIT_SCENE.instantiate()
+	)
+
+	var level: Node = get_current_level()
+
+	if level == null:
+		blood_hit.queue_free()
+		return
+
+	level.add_child(
+		blood_hit
+	)
+
+	blood_hit.global_position = hit_position
+
+func get_current_level() -> Node:
+	var level: Node = get_tree().get_first_node_in_group(
+		"level"
+	)
+
+	if level == null:
+		push_error(
+			"Enemy: Current level not found."
+		)
+
+	return level
