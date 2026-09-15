@@ -1,34 +1,34 @@
 [gd_scene format=3 uid="uid://5n166mb2cna1"]
 
 [ext_resource type="Script" uid="uid://cli7ot1bbu0ij" path="res://scripts/player.gd" id="1_dovo2"]
-[ext_resource type="Texture2D" uid="uid://b4hymd7de671c" path="res://assets/characters/bolsorambo/attack/sprite-frame-1.png" id="2_007i1"]
-[ext_resource type="Texture2D" uid="uid://0fou1817orel" path="res://assets/characters/bolsorambo/idle/sprite-frame-1.png" id="2_gx1jg"]
-[ext_resource type="Texture2D" uid="uid://dlucy7nbuywl7" path="res://assets/characters/bolsorambo/attack/sprite-frame-2.png" id="3_6cv16"]
-[ext_resource type="Texture2D" uid="uid://5mvur6mijm85" path="res://assets/characters/bolsorambo/idle/sprite-frame-2.png" id="3_ugbui"]
-[ext_resource type="Texture2D" uid="uid://fu7pwlasosvs" path="res://assets/characters/bolsorambo/idle/sprite-frame-3.png" id="4_fcs02"]
-[ext_resource type="Texture2D" uid="uid://dmvrm6ntgcce7" path="res://assets/characters/bolsorambo/attack/sprite-frame-3.png" id="4_j4nxn"]
-[ext_resource type="Texture2D" uid="uid://0m5btd4qfxqs" path="res://assets/characters/bolsorambo/attack/sprite-frame-4.png" id="5_28m0y"]
-[ext_resource type="Texture2D" uid="uid://bj2six7afxt6i" path="res://assets/characters/bolsorambo/idle/sprite-frame-4.png" id="5_myrg7"]
-[ext_resource type="Texture2D" uid="uid://q8q15chu0ssb" path="res://assets/characters/bolsorambo/jump/sprite-frame-1.png" id="6_kvlxm"]
-[ext_resource type="Texture2D" uid="uid://b4iucmr02mi7l" path="res://assets/characters/bolsorambo/death/sprite-frame-1.png" id="6_uniwh"]
-[ext_resource type="Texture2D" uid="uid://ddbqqbh1i1ofj" path="res://assets/characters/bolsorambo/death/sprite-frame-2.png" id="7_iqsei"]
-[ext_resource type="Texture2D" uid="uid://dc1a7j4sbfup8" path="res://assets/characters/bolsorambo/jump/sprite-frame-2.png" id="7_uf5tr"]
-[ext_resource type="Texture2D" uid="uid://b6oo2h8jql5y4" path="res://assets/characters/bolsorambo/jump/sprite-frame-3.png" id="8_lgqa7"]
-[ext_resource type="Texture2D" uid="uid://dtj87ddq6n514" path="res://assets/characters/bolsorambo/death/sprite-frame-3.png" id="8_tffgl"]
-[ext_resource type="Texture2D" uid="uid://chphrqtb4epjf" path="res://assets/characters/bolsorambo/jump/sprite-frame-4.png" id="9_8ydkj"]
-[ext_resource type="Texture2D" uid="uid://dkgacqj6vnvea" path="res://assets/characters/bolsorambo/death/sprite-frame-4.png" id="9_pk8ii"]
-[ext_resource type="Texture2D" uid="uid://cvxq3gmmy2213" path="res://assets/characters/bolsorambo/jump_attack/sprite-frame-1.png" id="14_uniwh"]
-[ext_resource type="Texture2D" uid="uid://bqtxnav1a8hy7" path="res://assets/characters/bolsorambo/jump_attack/sprite-frame-2.png" id="15_iqsei"]
-[ext_resource type="Texture2D" uid="uid://dmxwkxoulsb6i" path="res://assets/characters/bolsorambo/jump_attack/sprite-frame-3.png" id="16_tffgl"]
-[ext_resource type="Texture2D" uid="uid://dqskc8mab3af7" path="res://assets/characters/bolsorambo/jump_attack/sprite-frame-4.png" id="17_pk8ii"]
-[ext_resource type="Texture2D" uid="uid://yx4c7bdt56pe" path="res://assets/characters/bolsorambo/walk/sprite-frame-1.png" id="18_5mf0n"]
-[ext_resource type="Texture2D" uid="uid://bk7tf5j0rd7lc" path="res://assets/characters/bolsorambo/walk/sprite-frame-2.png" id="19_4hvnv"]
-[ext_resource type="Texture2D" uid="uid://bbly8ws8333df" path="res://assets/characters/bolsorambo/walk/sprite-frame-3.png" id="20_bbmj2"]
-[ext_resource type="Texture2D" uid="uid://diqwav47yd55k" path="res://assets/characters/bolsorambo/walk/sprite-frame-4.png" id="21_kxw46"]
-[ext_resource type="Texture2D" uid="uid://b341lsbdxtxew" path="res://assets/characters/bolsorambo/walk_attack/sprite-frame-1.png" id="22_8qxvo"]
-[ext_resource type="Texture2D" uid="uid://bsqcwga3akm4h" path="res://assets/characters/bolsorambo/walk_attack/sprite-frame-2.png" id="23_5q8fn"]
-[ext_resource type="Texture2D" uid="uid://cxqglc4i003ti" path="res://assets/characters/bolsorambo/walk_attack/sprite-frame-3.png" id="24_wva7c"]
-[ext_resource type="Texture2D" uid="uid://cupisuchipkau" path="res://assets/characters/bolsorambo/walk_attack/sprite-frame-4.png" id="25_7obkq"]
+[ext_resource type="Texture2D" uid="uid://cdc20jfvcumtr" path="res://assets/characters/bolsorambo/attack/frame_01.png" id="2_tffgl"]
+[ext_resource type="Texture2D" uid="uid://b2ljxd4ct30k7" path="res://assets/characters/bolsorambo/attack/frame_02.png" id="3_pk8ii"]
+[ext_resource type="Texture2D" uid="uid://bmwuvucaw770e" path="res://assets/characters/bolsorambo/attack/frame_03.png" id="4_5mf0n"]
+[ext_resource type="Texture2D" uid="uid://c1g28spjvatwq" path="res://assets/characters/bolsorambo/attack/frame_04.png" id="5_4hvnv"]
+[ext_resource type="Texture2D" uid="uid://bdbxam0vsb6a0" path="res://assets/characters/bolsorambo/death/frame_01.png" id="6_bbmj2"]
+[ext_resource type="Texture2D" uid="uid://d4ekg42a5js7d" path="res://assets/characters/bolsorambo/death/frame_02.png" id="7_kxw46"]
+[ext_resource type="Texture2D" uid="uid://vlg8ho6n1mmx" path="res://assets/characters/bolsorambo/death/frame_03.png" id="8_8qxvo"]
+[ext_resource type="Texture2D" uid="uid://c26uhv6qapo1u" path="res://assets/characters/bolsorambo/death/frame_04.png" id="9_5q8fn"]
+[ext_resource type="Texture2D" uid="uid://4uhb2nv0ig35" path="res://assets/characters/bolsorambo/idle/frame_01.png" id="10_wva7c"]
+[ext_resource type="Texture2D" uid="uid://dgw47ucw1xguu" path="res://assets/characters/bolsorambo/idle/frame_02.png" id="11_7obkq"]
+[ext_resource type="Texture2D" uid="uid://dj3gor234ibw6" path="res://assets/characters/bolsorambo/idle/frame_03.png" id="12_vo27k"]
+[ext_resource type="Texture2D" uid="uid://6mq7f42w15l3" path="res://assets/characters/bolsorambo/idle/frame_04.png" id="13_genst"]
+[ext_resource type="Texture2D" uid="uid://caiy8shckwhgh" path="res://assets/characters/bolsorambo/jump/frame_01.png" id="14_niom3"]
+[ext_resource type="Texture2D" uid="uid://rlahb566ddhd" path="res://assets/characters/bolsorambo/jump/frame_02.png" id="15_ttakn"]
+[ext_resource type="Texture2D" uid="uid://c2jvmv2wvinex" path="res://assets/characters/bolsorambo/jump/frame_03.png" id="16_rw8a5"]
+[ext_resource type="Texture2D" uid="uid://bcbroqlv767tg" path="res://assets/characters/bolsorambo/jump/frame_04.png" id="17_iwuka"]
+[ext_resource type="Texture2D" uid="uid://bdg7iaalrdux2" path="res://assets/characters/bolsorambo/jump_attack/frame_01.png" id="18_hyqqp"]
+[ext_resource type="Texture2D" uid="uid://c5c7p87bb2mjb" path="res://assets/characters/bolsorambo/jump_attack/frame_02.png" id="19_ds1xl"]
+[ext_resource type="Texture2D" uid="uid://6ebv2d7jbm2t" path="res://assets/characters/bolsorambo/jump_attack/frame_03.png" id="20_1u1sw"]
+[ext_resource type="Texture2D" uid="uid://btqadkcr6bxx2" path="res://assets/characters/bolsorambo/jump_attack/frame_04.png" id="21_2t3bg"]
+[ext_resource type="Texture2D" uid="uid://npbkrbe0bjcj" path="res://assets/characters/bolsorambo/walk/frame_01.png" id="22_jrbya"]
+[ext_resource type="Texture2D" uid="uid://0cmo8r8o2eol" path="res://assets/characters/bolsorambo/walk/frame_02.png" id="23_ahqnk"]
+[ext_resource type="Texture2D" uid="uid://ywocufetpq5s" path="res://assets/characters/bolsorambo/walk/frame_03.png" id="24_vb1ce"]
+[ext_resource type="Texture2D" uid="uid://dku6qy6acoywk" path="res://assets/characters/bolsorambo/walk/frame_04.png" id="25_0ncpa"]
+[ext_resource type="Texture2D" uid="uid://bmf0uaesrubep" path="res://assets/characters/bolsorambo/walk_attack/frame_01.png" id="26_upxxc"]
+[ext_resource type="Texture2D" uid="uid://ccs7nuqut0c75" path="res://assets/characters/bolsorambo/walk_attack/frame_02.png" id="27_ln3h3"]
+[ext_resource type="Texture2D" uid="uid://c0oh1gg5sgjw5" path="res://assets/characters/bolsorambo/walk_attack/frame_03.png" id="28_uygh0"]
+[ext_resource type="Texture2D" uid="uid://ca8xqqtqm4eiv" path="res://assets/characters/bolsorambo/walk_attack/frame_04.png" id="29_t1aof"]
 [ext_resource type="AudioStream" uid="uid://bqqpmgqrnm04v" path="res://assets/audio/sfx/weapons/rifle_shot_01.mp3" id="30_iqsei"]
 [ext_resource type="Script" uid="uid://c1bieqi4skeit" path="res://scripts/player_camera.gd" id="30_tffgl"]
 
@@ -36,67 +36,67 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_007i1")
+"texture": ExtResource("2_tffgl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_6cv16")
+"texture": ExtResource("3_pk8ii")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_j4nxn")
+"texture": ExtResource("4_5mf0n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_28m0y")
+"texture": ExtResource("5_4hvnv")
 }],
 "loop": 0,
 "name": &"attack",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_uniwh")
+"texture": ExtResource("6_bbmj2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_iqsei")
+"texture": ExtResource("7_kxw46")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_tffgl")
+"texture": ExtResource("8_8qxvo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_pk8ii")
+"texture": ExtResource("9_5q8fn")
 }],
 "loop": 0,
 "name": &"death",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_gx1jg")
+"texture": ExtResource("10_wva7c")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ugbui")
+"texture": ExtResource("11_7obkq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_fcs02")
+"texture": ExtResource("12_vo27k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_myrg7")
+"texture": ExtResource("13_genst")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"idle",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_kvlxm")
+"texture": ExtResource("14_niom3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_uf5tr")
+"texture": ExtResource("15_ttakn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_lgqa7")
+"texture": ExtResource("16_rw8a5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_8ydkj")
+"texture": ExtResource("17_iwuka")
 }],
 "loop": 0,
 "name": &"jump",
@@ -104,16 +104,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_uniwh")
+"texture": ExtResource("18_hyqqp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_iqsei")
+"texture": ExtResource("19_ds1xl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_tffgl")
+"texture": ExtResource("20_1u1sw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_pk8ii")
+"texture": ExtResource("21_2t3bg")
 }],
 "loop": 0,
 "name": &"jump_attack",
@@ -121,33 +121,33 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_5mf0n")
+"texture": ExtResource("22_jrbya")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_4hvnv")
+"texture": ExtResource("23_ahqnk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_bbmj2")
+"texture": ExtResource("24_vb1ce")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_kxw46")
+"texture": ExtResource("25_0ncpa")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"walk",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("22_8qxvo")
+"texture": ExtResource("26_upxxc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_5q8fn")
+"texture": ExtResource("27_ln3h3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_wva7c")
+"texture": ExtResource("28_uygh0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("25_7obkq")
+"texture": ExtResource("29_t1aof")
 }],
 "loop": 0,
 "name": &"walk_attack",
@@ -155,7 +155,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ekgt"]
-size = Vector2(68, 111.625)
+size = Vector2(75, 152)
 
 [node name="Player" type="CharacterBody2D" unique_id=813649103 groups=["player"]]
 collision_layer = 2
@@ -164,12 +164,12 @@ script = ExtResource("1_dovo2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=55518183]
 position = Vector2(5.499997, -7.500002)
-scale = Vector2(0.3333333, 0.30395684)
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_dovo2")
 animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=221389915]
-position = Vector2(2, 7.8125)
+position = Vector2(-1.5, 1)
 shape = SubResource("RectangleShape2D_7ekgt")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=378262537]
@@ -177,7 +177,7 @@ position_smoothing_enabled = true
 script = ExtResource("30_tffgl")
 
 [node name="ProjectileSpawn" type="Marker2D" parent="." unique_id=2109777105]
-position = Vector2(75, -5)
+position = Vector2(95, -18)
 
 [node name="GunshotAudio" type="AudioStreamPlayer2D" parent="." unique_id=95399037]
 stream = ExtResource("30_iqsei")
